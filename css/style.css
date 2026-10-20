@@ -326,6 +326,7 @@ body {
     height: 180px;
     background-color: #e5e7eb;
     border-bottom: 3px solid var(--border-color);
+    overflow: hidden;
 }
 
 .project-img {
@@ -367,6 +368,10 @@ body {
 }
 
 .project-link {
+    display: flex;
+    flex-direction: column; /* Stacks the links vertically */
+    gap: 0.5rem;            /* Space between "View Code" and "View PDF" */
+    margin-top: 1rem;
     text-decoration: none;
     color: var(--pastel-blue);
     font-weight: 700;
