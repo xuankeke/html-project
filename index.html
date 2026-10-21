@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal portfolio showcasing computer science projects, skills, and experience.">
     <title>Jenx | Portfolio & Resume</title>
-    <!-- Link to external CSS stylesheet -->
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <!-- ==================== HEADER & NAVIGATION ==================== -->
@@ -16,12 +19,15 @@
             <div class="logo">
                 <a href="#home">Jenx<span class="dot">.</span>dev</a>
             </div>
-            <!-- Mobile Menu Toggle Button -->
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+
+            <button class="nav-toggle" id="navToggle"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false">
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
             </button>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -38,12 +44,28 @@
         <section id="home" class="hero-section">
             <div class="hero-content">
                 <p class="hero-greeting">Hi, I'm</p>
+
                 <h1 class="hero-title">Jenx Yap Yee Xuan</h1>
-                <p class="hero-subtitle">University Student Pursuing a Bachelor Degree of Computer Science in Network Computing</p>
-                <p class="hero-description">Passionate about building clean user interfaces, object-oriented systems, and solving real-world problems through code.</p>
+
+                <p class="hero-subtitle">
+                    University Student Pursuing a Bachelor Degree of
+                    Computer Science in Network Computing
+                </p>
+
+                <p class="hero-description">
+                    Passionate about building clean user interfaces,
+                    object-oriented systems, and solving real-world
+                    problems through code.
+                </p>
+
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-secondary">
+                        Get in Touch
+                    </a>
                 </div>
             </div>
         </section>
@@ -51,13 +73,30 @@
         <!-- 2. ABOUT ME SECTION -->
         <section id="about" class="about-section">
             <div class="container">
+
                 <h2 class="section-title">About Me</h2>
+
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>Hello! I am a computer science student based in Malaysia, deeply interested in UI/UX Design, database modeling, and building intuitive applications. I enjoy figuring out user problems and using code to make their lives easier.</p>
-                        <p>When I'm not studying or writing code, you can find me exploring technical projects, working on data systems, or sharpening my problem-solving skills.</p>
-                        
-                        <h3 class="skills-heading">Core Technical Skills</h3>
+                        <p>
+                            Hello! I am a computer science student based
+                            in Malaysia, deeply interested in UI/UX Design,
+                            database modeling, and building intuitive
+                            applications. I enjoy figuring out user
+                            problems and using code to make their lives easier.
+                        </p>
+
+                        <p>
+                            When I'm not studying or writing code, you can
+                            find me exploring technical projects, working
+                            on data systems, or sharpening my
+                            problem-solving skills.
+                        </p>
+
+                        <h3 class="skills-heading">
+                            Core Technical Skills
+                        </h3>
+
                         <ul class="skills-list" aria-label="Technical Skills">
                             <li>Figma Prototyping</li>
                             <li>Python (OOP)</li>
@@ -67,113 +106,257 @@
                             <li>Git & Version Control</li>
                         </ul>
                     </div>
+
                     <div class="about-image-wrapper">
-                        <!-- Profile Image -->
-                        <img src="images/working.jpg" alt="Portrait of Jenx working on code" width="300" height="400" title="Jenx working" class="about-img">
+                        <img
+                            src="images/working.jpg"
+                            alt="Portrait of Jenx working on code"
+                            width="300"
+                            height="400"
+                            title="Jenx working"
+                            class="about-img"
+                        >
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. PROJECTS SECTION (At least 5 main items/categories) -->
+        <!-- 3. PROJECTS SECTION -->
         <section id="projects" class="projects-section">
             <div class="container">
+
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Explore a selection of my academic and independent development projects.</p>
-                
+
+                <p class="section-subtitle">
+                    Explore a selection of my academic and independent
+                    development projects.
+                </p>
+
                 <!-- Category Filter Buttons -->
                 <div class="project-filters" aria-label="Filter projects">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="python">Python</button>
-                    <button class="filter-btn" data-filter="java">Java</button>
-                    <button class="filter-btn" data-filter="web">Web / UI</button>
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="python">
+                        Python
+                    </button>
+
+                    <button class="filter-btn" data-filter="java">
+                        Java
+                    </button>
+
+                    <button class="filter-btn" data-filter="web">
+                        Web / UI
+                    </button>
                 </div>
 
                 <div class="projects-grid">
 
-                    <!-- Project 1 -->
+                    <!-- PROJECT 1: DIRECT FARM -->
                     <article class="project-card" data-category="python">
                         <div class="project-img-wrapper">
-                            <img src="images/farm.jpg" alt="Screenshot of Direct Farm agricultural management dashboard" class="project-img">
+                            <img
+                                src="images/farm.jpg"
+                                alt="Screenshot of Direct Farm agricultural management dashboard"
+                                class="project-img"
+                            >
                         </div>
+
                         <div class="project-info">
-                            <h3 class="project-title">Direct Farm Management System</h3>
-                            <p class="project-desc">A Python-based object-oriented system featuring role-based user authentication, inheritance structures, and text-file data persistence for direct agricultural trading.</p>
+                            <h3 class="project-title">
+                                Direct Farm Management System
+                            </h3>
+
+                            <p class="project-desc">
+                                A Python-based object-oriented system
+                                featuring role-based user authentication,
+                                inheritance structures, and text-file data
+                                persistence for direct agricultural trading.
+                            </p>
+
                             <div class="project-tags">
                                 <span>Python</span>
                                 <span>OOP</span>
                             </div>
-                            <a href="./code/oosd.zip" class="project-link" aria-label="View Direct Farm Management System source code">View Code &rarr;</a>
-                        
-			    <a href="https://docs.google.com/gview?url=https://raw.githubusercontent.com/xuankeke/html-project/main/Docs/OOSD.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View project documentation PDF">View PDF &rarr;</a> 
+
+                            <a
+                                href="code/oosd.zip"
+                                class="project-link"
+                                aria-label="View Direct Farm Management System source code"
+                            >
+                                View Code &rarr;
+                            </a>
+
+                            <!-- FIXED: Direct link to the PDF -->
+                            <a
+                                href="Docs/OOSD.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                                aria-label="View Direct Farm project PDF"
+                            >
+                                View PDF &rarr;
+                            </a>
+                        </div>
                     </article>
 
-
-                    <!-- Project 2 -->
+                    <!-- PROJECT 2: FOOD DELIVERY APP -->
                     <article class="project-card" data-category="java">
                         <div class="project-img-wrapper">
-                            <img src="images/SAD.jpg" alt="Screenshot of Food Delivery application user interface" class="project-img">
+                            <img
+                                src="images/SAD.jpg"
+                                alt="Screenshot of Food Delivery application user interface"
+                                class="project-img"
+                            >
                         </div>
+
                         <div class="project-info">
-                            <h3 class="project-title">Food Delivery App Design</h3>
-                            <p class="project-desc">A comprehensive System Analysis and Design project featuring structured Data Flow Diagrams (DFD), Entity-Relationship diagrams (ERD), use case specifications, and a fully prototyped user interface for an optimized food ordering workflow.</p>
+                            <h3 class="project-title">
+                                Food Delivery App Design
+                            </h3>
+
+                            <p class="project-desc">
+                                A comprehensive System Analysis and Design
+                                project featuring structured Data Flow
+                                Diagrams (DFD), Entity-Relationship diagrams
+                                (ERD), use case specifications, and a fully
+                                prototyped user interface for an optimized
+                                food ordering workflow.
+                            </p>
+
                             <div class="project-tags">
                                 <span>DFD</span>
-                                <span>Swing ERD</span>
-				<span>Swing Figma</span>
+                                <span>ERD</span>
+                                <span>Figma</span>
                             </div>
-                            <a href="https://docs.google.com/gview?url=https://raw.githubusercontent.com/xuankeke/html-project/main/Docs/SAD.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View project documentation PDF">View PDF &rarr;</a> 
-			  
+
+                            <!-- FIXED: Direct link to the PDF -->
+                            <a
+                                href="Docs/SAD.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                                aria-label="View Food Delivery project PDF"
+                            >
+                                View PDF &rarr;
+                            </a>
+                        </div>
                     </article>
 
-
-                    <!-- Project 3 -->
+                    <!-- PROJECT 3: EV CAR DASHBOARD -->
                     <article class="project-card" data-category="web">
                         <div class="project-img-wrapper">
-                            <img src="images/ev.jpg" alt="Screenshot of HCI EV Car Dashboard interface" class="project-img">
+                            <img
+                                src="images/ev.jpg"
+                                alt="Screenshot of HCI EV Car Dashboard interface"
+                                class="project-img"
+                            >
                         </div>
+
                         <div class="project-info">
-                            <h3 class="project-title">HCI EV Car Dashboard</h3>
-                            <p class="project-desc">>A human-computer interaction electric vehicle dashboard featuring a minimalist corporate aesthetic, real-time data monitoring widgets, and intuitive touch-friendly navigation layouts.</p>
+                            <h3 class="project-title">
+                                HCI EV Car Dashboard
+                            </h3>
+
+                            <p class="project-desc">
+                                A human-computer interaction electric vehicle
+                                dashboard featuring a minimalist corporate
+                                aesthetic, real-time data monitoring widgets,
+                                and intuitive touch-friendly navigation layouts.
+                            </p>
+
                             <div class="project-tags">
                                 <span>UI/UX</span>
                                 <span>Figma</span>
                             </div>
-                             <a href="https://docs.google.com/gview?url=https://raw.githubusercontent.com/xuankeke/html-project/main/Docs/hci.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View project documentation PDF">View PDF &rarr;</a> 
-			    <a href="SAD.pdf#view=FitH" target="_blank" rel="noopener noreferrer" class="project-link">View PDF &rarr;</a> 
+
+                            <!-- FIXED: Link to HCI PDF, not SAD.pdf -->
+                            <a
+                                href="Docs/hci.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                                aria-label="View HCI EV Car Dashboard project PDF"
+                            >
+                                View PDF &rarr;
+                            </a>
+                        </div>
                     </article>
 
-                    <!-- Project 4 -->
+                    <!-- PROJECT 4: STOP-AND-WAIT PROTOCOL ANALYZER -->
                     <article class="project-card" data-category="python">
                         <div class="project-img-wrapper">
-                            <img src="assets/images/project4.jpg" alt="Screenshot of network protocol simulation analysis tool" class="project-img">
+                            <img
+                                src="assets/images/project4.jpg"
+                                alt="Screenshot of network protocol simulation analysis tool"
+                                class="project-img"
+                            >
                         </div>
+
                         <div class="project-info">
-                            <h3 class="project-title">Stop-and-Wait Protocol Analyzer</h3>
-                            <p class="project-desc">A performance evaluation tool computing network scenario parameters, packet loss overhead, and throughput efficiency metrics.</p>
+                            <h3 class="project-title">
+                                Stop-and-Wait Protocol Analyzer
+                            </h3>
+
+                            <p class="project-desc">
+                                A performance evaluation tool computing
+                                network scenario parameters, packet loss
+                                overhead, and throughput efficiency metrics.
+                            </p>
+
                             <div class="project-tags">
                                 <span>Python</span>
                                 <span>Networking</span>
                             </div>
-                            <a href="#" class="project-link" aria-label="View Stop-and-Wait Protocol Analyzer details">View Details &rarr;</a>
+
+                            <a
+                                href="#"
+                                class="project-link"
+                                aria-label="View Stop-and-Wait Protocol Analyzer details"
+                            >
+                                View Details &rarr;
+                            </a>
                         </div>
                     </article>
 
-                    <!-- Project 5 -->
+                    <!-- PROJECT 5: WELLNESS TRACKING INTERFACE -->
                     <article class="project-card" data-category="web">
                         <div class="project-img-wrapper">
-                            <img src="assets/images/project5.jpg" alt="Screenshot of interactive Figma mobile prototype layout" class="project-img">
+                            <img
+                                src="assets/images/project5.jpg"
+                                alt="Screenshot of interactive Figma mobile prototype layout"
+                                class="project-img"
+                            >
                         </div>
+
                         <div class="project-info">
-                            <h3 class="project-title">Wellness Tracking Interface Prototype</h3>
-                            <p class="project-desc">An interactive user interface prototype designed with a focus on accessible micro-interactions, clean color palettes, and responsive mobile layouts.</p>
+                            <h3 class="project-title">
+                                Wellness Tracking Interface Prototype
+                            </h3>
+
+                            <p class="project-desc">
+                                An interactive user interface prototype
+                                designed with a focus on accessible
+                                micro-interactions, clean color palettes,
+                                and responsive mobile layouts.
+                            </p>
+
                             <div class="project-tags">
                                 <span>Figma</span>
                                 <span>UI/UX</span>
                             </div>
-                            <a href="#" class="project-link" aria-label="View Wellness Tracking Interface prototype">View Prototype &rarr;</a>
+
+                            <a
+                                href="#"
+                                class="project-link"
+                                aria-label="View Wellness Tracking Interface prototype"
+                            >
+                                View Prototype &rarr;
+                            </a>
                         </div>
                     </article>
+
                 </div>
             </div>
         </section>
@@ -181,44 +364,122 @@
         <!-- 4. CONTACT SECTION -->
         <section id="contact" class="contact-section">
             <div class="container">
+
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Have a question, proposal, or want to connect? Drop a message below!</p>
-                
+
+                <p class="section-subtitle">
+                    Have a question, proposal, or want to connect?
+                    Drop a message below!
+                </p>
+
                 <div class="contact-wrapper">
-                    <!-- Direct Contact Links -->
+
+                    <!-- DIRECT CONTACT LINKS -->
                     <div class="contact-info">
                         <h3>Let's Talk</h3>
-                        <p>I am always open to discussing new projects, academic collaborations, or software development opportunities.</p>
+
+                        <p>
+                            I am always open to discussing new projects,
+                            academic collaborations, or software
+                            development opportunities.
+                        </p>
+
                         <ul class="contact-details-list">
-                            <li><strong>Email:</strong> <a href="mailto:jenxyapyeexuan@gmail.com">jenxyapyeexuan@gmail.com</a></li>
-                            <li><strong>Location:</strong> Selangor, Malaysia</li>
-                            <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></li>
+                            <li>
+                                <strong>Email:</strong>
+                                <a href="mailto:jenxyapyeexuan@gmail.com">
+                                    jenxyapyeexuan@gmail.com
+                                </a>
+                            </li>
+
+                            <li>
+                                <strong>Location:</strong>
+                                Selangor, Malaysia
+                            </li>
+
+                            <li>
+                                <strong>GitHub:</strong>
+                                <a
+                                    href="https://github.com/xuankeke"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    github.com/xuankeke
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- Front-End Contact Form -->
+                    <!-- FRONT-END CONTACT FORM -->
                     <form id="contactForm" class="contact-form" novalidate>
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                            <span class="error-message" id="nameError" aria-live="polite"></span>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Enter your full name"
+                            >
+
+                            <span
+                                class="error-message"
+                                id="nameError"
+                                aria-live="polite"
+                            ></span>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                            <span class="error-message" id="emailError" aria-live="polite"></span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="Enter your email address"
+                            >
+
+                            <span
+                                class="error-message"
+                                id="emailError"
+                                aria-live="polite"
+                            ></span>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
-                            <span class="error-message" id="messageError" aria-live="polite"></span>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                required
+                                placeholder="Type your message here..."
+                            ></textarea>
+
+                            <span
+                                class="error-message"
+                                id="messageError"
+                                aria-live="polite"
+                            ></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
-                        <p id="formSuccess" class="success-message" aria-live="polite"></p>
+                        <button
+                            type="submit"
+                            class="btn btn-primary submit-btn"
+                        >
+                            Send Message
+                        </button>
+
+                        <p
+                            id="formSuccess"
+                            class="success-message"
+                            aria-live="polite"
+                        ></p>
                     </form>
+
                 </div>
             </div>
         </section>
@@ -226,16 +487,20 @@
     </main>
 
     <!-- ==================== FOOTER ==================== -->
-    <header class="site-footer"> <!-- Note: footer tag corrected below in thought -->
-    </header>
     <footer class="site-footer">
         <div class="container footer-content">
-            <p>&copy; 2026 Jenx Yap. Built with pure HTML, CSS, and JavaScript.</p>
-            <p><a href="#home">Back to top &uarr;</a></p>
+            <p>
+                &copy; 2026 Jenx Yap. Built with pure HTML, CSS, and JavaScript.
+            </p>
+
+            <p>
+                <a href="#home">Back to top &uarr;</a>
+            </p>
         </div>
     </footer>
 
-    <!-- Link to external JavaScript file -->
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
+
 </body>
 </html>
