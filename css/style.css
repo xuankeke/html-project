@@ -531,3 +531,29 @@ body {
         gap: 1rem;
     }
 }
+/* Fix: Make contact form fields visible */
+#contactForm .form-group {
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+    opacity: 1;
+}
+
+#contactForm input,
+#contactForm textarea {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    min-height: 45px;
+    padding: 12px;
+    background-color: #f5f3ff;
+    color: #1e1e24;
+    border: 2px solid #1e1e24;
+    border-radius: 8px;
+}
+
+#contactForm textarea {
+    min-height: 120px;
+    resize: vertical;
+}
