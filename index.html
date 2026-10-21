@@ -425,9 +425,12 @@
 
                             <li>
                                 <strong>Email:</strong>
-                                <a href="mailto:jenxyapyeexuan@gmail.com">
-                                    jenxyapyeexuan@gmail.com
-                                </a>
+                                <a
+        href="mailto:jenxyapyeexuan@gmail.com?subject=Portfolio%20Enquiry"
+        aria-label="Send an email to Jenx Yap"
+    >
+        jenxyapyeexuan@gmail.com
+    </a>
                             </li>
 
                             <li>
@@ -450,76 +453,51 @@
                     </div>
 
                     <!-- CONTACT FORM -->
-                    <form id="contactForm" class="contact-form" novalidate>
+                    
+<form
+    id="contactForm"
+    class="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+>
+    <div class="form-group">
+        <label for="name">Your Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Enter your full name"
+        >
+    </div>
 
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
+    <div class="form-group">
+        <label for="email">Your Email</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Enter your email address"
+        >
+    </div>
 
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                required
-                                placeholder="Enter your full name"
-                            >
+    <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Type your message here..."
+        ></textarea>
+    </div>
 
-                            <span
-                                class="error-message"
-                                id="nameError"
-                                aria-live="polite"
-                            ></span>
-                        </div>
+    <button type="submit" class="btn btn-primary submit-btn">
+        Send Message
+    </button>
+</form>
 
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                required
-                                placeholder="Enter your email address"
-                            >
-
-                            <span
-                                class="error-message"
-                                id="emailError"
-                                aria-live="polite"
-                            ></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-
-                            <textarea
-                                id="message"
-                                name="message"
-                                rows="5"
-                                required
-                                placeholder="Type your message here..."
-                            ></textarea>
-
-                            <span
-                                class="error-message"
-                                id="messageError"
-                                aria-live="polite"
-                            ></span>
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="btn btn-primary submit-btn"
-                        >
-                            Send Message
-                        </button>
-
-                        <p
-                            id="formSuccess"
-                            class="success-message"
-                            aria-live="polite"
-                        ></p>
-
-                    </form>
 
                 </div>
             </div>
