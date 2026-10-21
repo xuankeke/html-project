@@ -53,30 +53,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==================== FEATURE 3: Project Category Filter System ====================
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+   const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
 
-    if (filterButtons.length > 0 && projectCards.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+if (filterButtons.length > 0 && projectCards.length > 0) {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
 
-                const filterValue = button.getAttribute('data-filter');
+            // Update active filter button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
 
-                projectCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
+            button.classList.add('active');
 
-                    if (filterValue === 'all' || cardCategory === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+            const filterValue = button.getAttribute('data-filter')
+                .trim()
+                .toLowerCase();
+
+            // Filter project cards
+            projectCards.forEach(card => {
+                const cardCategories = (
+                    card.getAttribute('data-category') || ''
+                )
+                    .split(',')
+                    .map(category => category.trim().toLowerCase());
+
+                if (
+                    filterValue === 'all' ||
+                    cardCategories.includes(filterValue)
+                ) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         });
-    }
-
+    });
+}
 
     // ==================== FEATURE 4: Contact Form Validation & Pastel Toast ====================
     const contactForm = document.getElementById('contactForm');
