@@ -93,63 +93,233 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
 }
 
     
+ ```javascript
     // ==================== FEATURE 4: Contact Form & Email App ====================
-    // FEATURE 4: Contact Form
-const contactForm = document.getElementById('contactForm');
+    const contactForm = document.getElementById('contactForm');
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const successMessage = document.getElementById('formSuccess');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const successMessage = document.getElementById('formSuccess');
 
-        document.getElementById('nameError').textContent = '';
-        document.getElementById('emailError').textContent = '';
-        document.getElementById('messageError').textContent = '';
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
 
-        let valid = true;
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
 
-        if (!name) {
-            document.getElementById('nameError').textContent =
-                'Please enter your name.';
-            valid = false;
+            // Clear previous errors
+            if (nameError) nameError.textContent = '';
+            if (emailError) emailError.textContent = '';
+            if (messageError) messageError.textContent = '';
+
+            if (successMessage) {
+                successMessage.textContent = '';
+            }
+
+            let isValid = true;
+
+            // Validate name
+            if (!name) {
+                if (nameError) {
+                    nameError.textContent = 'Please enter your name.';
+                }
+                isValid = false;
+            }
+
+            // Validate email
+            if (!email || !emailInput.validity.valid) {
+                if (emailError) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                }
+                isValid = false;
+            }
+
+            // Validate message
+            if (!message) {
+                if (messageError) {
+                    messageError.textContent = 'Please write a message.';
+                }
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Prepare the email
+            const recipient = 'jenxyapyeexuan@gmail.com';
+
+            const subject = encodeURIComponent(
+                'Portfolio Enquiry from ' + name
+            );
+
+            const body = encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n\n' +
+                'Message:\n' + message
+            );
+
+            const mailtoLink =
+                'mailto:' + recipient +
+                '?subject=' + subject +
+                '&body=' + body;
+
+            if (successMessage) {
+                successMessage.textContent =
+                    'Your email app should open. Please click Send in your email app to deliver your message.';
+            }
+
+            // Open the visitor's default email application
+            window.location.href = mailtoLink;
+        });
+    }
+
+    // ==================== FEATURE 5: Dynamic Copyright Year ====================
+    const copyrightYear = document.getElementById('copyrightYear');
+
+    if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+    }
+
+    // ==================== FEATURE 6: Scroll-to-Top Button ====================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // ==================== FEATURE 7: Typing Effect ====================
+    const typingElement = document.querySelector('.typing-text');
+
+    if (typingElement) {
+        const words = ['Network Computing Student', 'Future IT Professional'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (deleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingElement.textContent = currentWord.substring(0, charIndex);
+
+            let delay = deleting ? 60 : 100;
+
+            if (!deleting && charIndex === currentWord.length) {
+                deleting = true;
+                delay = 1200;
+            } else if (deleting && charIndex === 0) {
+                deleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                delay = 400;
+            }
+
+            setTimeout(typeEffect, delay);
         }
 
-        if (!email || !document.getElementById('email').validity.valid) {
-            document.getElementById('emailError').textContent =
-                'Please enter a valid email address.';
-            valid = false;
-        }
+        typeEffect();
+    }
 
-        if (!message) {
-            document.getElementById('messageError').textContent =
-                'Please write a message.';
-            valid = false;
-        }
+    // ==================== FEATURE 8: Project Card Hover Effect ====================
+    const projectCards = document.querySelectorAll('.project-card');
 
-        if (!valid) return;
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            this.classList.add('hovered');
+        });
 
-        const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
-        const body = encodeURIComponent(
-            'Name: ' + name + '\n' +
-            'Email: ' + email + '\n\n' +
-            'Message:\n' + message
-        );
-
-        if (successMessage) {
-            successMessage.textContent =
-                'Your email app should open. Press Send in the email app to send your message.';
-        }
-
-        window.location.href =
-            'mailto:jenxyapyeexuan@gmail.com?subject=' +
-            subject + '&body=' + body;
+        card.addEventListener('mouseleave', function () {
+            this.classList.remove('hovered');
+        });
     });
-}
+
+    // ==================== FEATURE 9: Live Project Search ====================
+    const projectSearch = document.getElementById('projectSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    let activeFilter = 'all';
+
+    function filterProjects() {
+        const searchTerm = projectSearch
+            ? projectSearch.value.trim().toLowerCase()
+            : '';
+
+        projectCards.forEach(card => {
+            const categories = (card.getAttribute('data-category') || '')
+                .split(',')
+                .map(category => category.trim().toLowerCase());
+
+            const title = (
+                card.querySelector('h3')?.textContent || ''
+            ).toLowerCase();
+
+            const description = (
+                card.querySelector('p')?.textContent || ''
+            ).toLowerCase();
+
+            const matchesCategory =
+                activeFilter === 'all' || categories.includes(activeFilter);
+
+            const matchesSearch =
+                title.includes(searchTerm) ||
+                description.includes(searchTerm);
+
+            card.style.display =
+                matchesCategory && matchesSearch ? '' : 'none';
+        });
+    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            activeFilter = (
+                this.getAttribute('data-filter') || 'all'
+            ).trim().toLowerCase();
+
+            filterProjects();
+        });
+    });
+
+    if (projectSearch) {
+        projectSearch.addEventListener('input', filterProjects);
+    }
+
+    // ==================== FEATURE 10: External Link Security ====================
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+
+}); // End of DOMContentLoaded
+```
     // ==================== FEATURE 5: Dynamic Copyright Year ====================
     const footerParagraph = document.querySelector('.site-footer p');
     if (footerParagraph) {
