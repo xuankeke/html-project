@@ -156,6 +156,46 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
     }
 
 
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const successMessage = document.getElementById('formSuccess');
+
+        if (!name || !email || !message) {
+            return;
+        }
+
+        const recipient = 'jenxyapyeexuan@gmail.com';
+        const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
+
+        const body = encodeURIComponent(
+            'Name: ' + name + '\n' +
+            'Email: ' + email + '\n\n' +
+            'Message:\n' + message
+        );
+
+        const mailtoLink =
+            'mailto:' + recipient +
+            '?subject=' + subject +
+            '&body=' + body;
+
+        if (successMessage) {
+            successMessage.textContent =
+                'Opening your email app. Please send the email to complete your message.';
+        }
+
+        window.location.href = mailtoLink;
+    });
+}
+
+
+
     // ==================== FEATURE 5: Dynamic Copyright Year ====================
     const footerParagraph = document.querySelector('.site-footer p');
     if (footerParagraph) {

@@ -454,12 +454,9 @@
 
                     <!-- CONTACT FORM -->
                     
-<form
-    id="contactForm"
-    class="contact-form"
-    action="https://formspree.io/f/YOUR_FORM_ID"
-    method="POST"
->
+
+<form id="contactForm" class="contact-form">
+
     <div class="form-group">
         <label for="name">Your Name</label>
         <input
@@ -493,11 +490,16 @@
         ></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary submit-btn">
+    <button
+        type="submit"
+        class="btn btn-primary submit-btn"
+    >
         Send Message
     </button>
-</form>
 
+    <p id="formSuccess" class="success-message" aria-live="polite"></p>
+
+</form>
 
                 </div>
             </div>
