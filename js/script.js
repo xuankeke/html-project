@@ -53,53 +53,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==================== FEATURE 3: Project Category Filter System ====================
-   const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
 
-if (filterButtons.length > 0 && projectCards.length > 0) {
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
+    if (filterButtons.length > 0 && projectCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
 
-            // Update active filter button
-            filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
+                // Update active filter button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
 
-            button.classList.add('active');
+                button.classList.add('active');
 
-            const filterValue = button.getAttribute('data-filter')
-                .trim()
-                .toLowerCase();
+                const filterValue = button.getAttribute('data-filter')
+                    .trim()
+                    .toLowerCase();
 
-            // Filter project cards
-            projectCards.forEach(card => {
-                const cardCategories = (
-                    card.getAttribute('data-category') || ''
-                )
-                    .split(',')
-                    .map(category => category.trim().toLowerCase());
+                // Filter project cards
+                projectCards.forEach(card => {
+                    const cardCategories = (
+                        card.getAttribute('data-category') || ''
+                    )
+                        .split(',')
+                        .map(category => category.trim().toLowerCase());
 
-                if (
-                    filterValue === 'all' ||
-                    cardCategories.includes(filterValue)
-                ) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
+                    if (
+                        filterValue === 'all' ||
+                        cardCategories.includes(filterValue)
+                    ) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
-    });
-}
+    }
 
     
- ```javascript
-    // ==================== FEATURE 4: Contact Form & Email App ====================
+    // ==================== FEATURE 4: Contact Form & Email App Integration ====================
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevents page reload/jump to top
 
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
@@ -151,7 +151,7 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
 
             if (!isValid) return;
 
-            // Prepare the email
+            // Prepare the email info
             const recipient = 'jenxyapyeexuan@gmail.com';
 
             const subject = encodeURIComponent(
@@ -171,162 +171,20 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
 
             if (successMessage) {
                 successMessage.textContent =
-                    'Your email app should open. Please click Send in your email app to deliver your message.';
+                    'Opening your email app with your message ready to send!';
             }
 
-            // Open the visitor's default email application
+            // Open the user's default email application cleanly
             window.location.href = mailtoLink;
         });
     }
 
-    // ==================== FEATURE 5: Dynamic Copyright Year ====================
-    const copyrightYear = document.getElementById('copyrightYear');
-
-    if (copyrightYear) {
-        copyrightYear.textContent = new Date().getFullYear();
-    }
-
-    // ==================== FEATURE 6: Scroll-to-Top Button ====================
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-    if (scrollTopBtn) {
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // ==================== FEATURE 7: Typing Effect ====================
-    const typingElement = document.querySelector('.typing-text');
-
-    if (typingElement) {
-        const words = ['Network Computing Student', 'Future IT Professional'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-
-            if (deleting) {
-                charIndex--;
-            } else {
-                charIndex++;
-            }
-
-            typingElement.textContent = currentWord.substring(0, charIndex);
-
-            let delay = deleting ? 60 : 100;
-
-            if (!deleting && charIndex === currentWord.length) {
-                deleting = true;
-                delay = 1200;
-            } else if (deleting && charIndex === 0) {
-                deleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                delay = 400;
-            }
-
-            setTimeout(typeEffect, delay);
-        }
-
-        typeEffect();
-    }
-
-    // ==================== FEATURE 8: Project Card Hover Effect ====================
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            this.classList.add('hovered');
-        });
-
-        card.addEventListener('mouseleave', function () {
-            this.classList.remove('hovered');
-        });
-    });
-
-    // ==================== FEATURE 9: Live Project Search ====================
-    const projectSearch = document.getElementById('projectSearch');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
-    let activeFilter = 'all';
-
-    function filterProjects() {
-        const searchTerm = projectSearch
-            ? projectSearch.value.trim().toLowerCase()
-            : '';
-
-        projectCards.forEach(card => {
-            const categories = (card.getAttribute('data-category') || '')
-                .split(',')
-                .map(category => category.trim().toLowerCase());
-
-            const title = (
-                card.querySelector('h3')?.textContent || ''
-            ).toLowerCase();
-
-            const description = (
-                card.querySelector('p')?.textContent || ''
-            ).toLowerCase();
-
-            const matchesCategory =
-                activeFilter === 'all' || categories.includes(activeFilter);
-
-            const matchesSearch =
-                title.includes(searchTerm) ||
-                description.includes(searchTerm);
-
-            card.style.display =
-                matchesCategory && matchesSearch ? '' : 'none';
-        });
-    }
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            activeFilter = (
-                this.getAttribute('data-filter') || 'all'
-            ).trim().toLowerCase();
-
-            filterProjects();
-        });
-    });
-
-    if (projectSearch) {
-        projectSearch.addEventListener('input', filterProjects);
-    }
-
-    // ==================== FEATURE 10: External Link Security ====================
-    document.querySelectorAll('a[target="_blank"]').forEach(link => {
-        link.setAttribute('rel', 'noopener noreferrer');
-    });
-
-}); // End of DOMContentLoaded
-```
     // ==================== FEATURE 5: Dynamic Copyright Year ====================
     const footerParagraph = document.querySelector('.site-footer p');
     if (footerParagraph) {
         const currentYear = new Date().getFullYear();
         footerParagraph.innerHTML = `&copy; ${currentYear} Jenx Yap. Built with pure HTML, CSS, and JavaScript.`;
     }
-
 
     // ==================== FEATURE 6: Scroll-to-Top Floating Pastel Button ====================
     const scrollToTopBtn = document.createElement('button');
@@ -368,7 +226,6 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         });
     });
 
-
     // ==================== FEATURE 7: Hero Subtitle Typing Effect ====================
     const heroSubtitle = document.querySelector('.hero-subtitle');
     if (heroSubtitle) {
@@ -386,7 +243,6 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         setTimeout(typeWriter, 500);
     }
 
-
     // ==================== FEATURE 8: Project Card Interactive Hover Effect ====================
     const projectCardsList = document.querySelectorAll('.project-card');
     projectCardsList.forEach(card => {
@@ -399,7 +255,6 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
             card.style.boxShadow = '4px 4px 0px #1e1e24';
         });
     });
-
 
     // ==================== FEATURE 9: Live Project Search Filter ====================
     const projectsSection = document.querySelector('#projects .container');
@@ -429,7 +284,7 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
-                projectCards.forEach(card => {
+                projectCardsList.forEach(card => {
                     const titleText = card.querySelector('.project-title').textContent.toLowerCase();
                     const descText = card.querySelector('.project-desc').textContent.toLowerCase();
 
@@ -443,7 +298,6 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         }
     }
 
-
     // ==================== FEATURE 10: External Link Security Enhancer ====================
     const allLinks = document.querySelectorAll('a');
     allLinks.forEach(link => {
@@ -453,4 +307,4 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         }
     });
 
-});
+}); // End of DOMContentLoaded
