@@ -100,8 +100,9 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
     const formSuccess = document.getElementById('formSuccess');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+});
             let isValid = true;
 
             if (nameInput.value.trim() === '') {
