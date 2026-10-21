@@ -92,7 +92,8 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
     });
 }
 
-    // ==================== FEATURE 4: Contact Form Validation & Pastel Toast ====================
+    
+    // ==================== FEATURE 4: Contact Form & Email App ====================
     const contactForm = document.getElementById('contactForm');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -101,8 +102,8 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-});
+            event.preventDefault();
+
             let isValid = true;
 
             if (nameInput.value.trim() === '') {
@@ -112,7 +113,10 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
                 clearError('nameError');
             }
 
-            if (emailInput.value.trim() === '' || !emailInput.value.includes('@') || !emailInput.value.includes('.')) {
+            if (
+                emailInput.value.trim() === '' ||
+                !emailInput.validity.valid
+            ) {
                 showError('emailError', 'Please enter a valid email address.');
                 isValid = false;
             } else {
@@ -126,22 +130,30 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
                 clearError('messageError');
             }
 
-            if (isValid) {
-                formSuccess.textContent = '✨ Thank you! Your message was sent successfully.';
-                formSuccess.style.color = '#db2777'; // Pastel pink matching theme
-                formSuccess.style.backgroundColor = '#fce7f3';
-                formSuccess.style.padding = '10px';
-                formSuccess.style.borderRadius = '8px';
-                formSuccess.style.border = '2px solid #1e1e24';
-                
-                contactForm.reset();
+            if (!isValid) return;
 
-                setTimeout(() => {
-                    formSuccess.textContent = '';
-                    formSuccess.style.backgroundColor = 'transparent';
-                    formSuccess.style.border = 'none';
-                }, 6000);
+            const recipient = 'jenxyapyeexuan@gmail.com';
+            const subject = encodeURIComponent(
+                'Portfolio Enquiry from ' + nameInput.value.trim()
+            );
+
+            const body = encodeURIComponent(
+                'Name: ' + nameInput.value.trim() + '\n' +
+                'Email: ' + emailInput.value.trim() + '\n\n' +
+                'Message:\n' + messageInput.value.trim()
+            );
+
+            const mailtoLink =
+                'mailto:' + recipient +
+                '?subject=' + subject +
+                '&body=' + body;
+
+            if (formSuccess) {
+                formSuccess.textContent =
+                    'Your email app should open. Please press Send there to deliver your message.';
             }
+
+            window.location.href = mailtoLink;
         });
     }
 
@@ -154,45 +166,6 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
         const errorElement = document.getElementById(elementId);
         if (errorElement) errorElement.textContent = '';
     }
-
-
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const successMessage = document.getElementById('formSuccess');
-
-        if (!name || !email || !message) {
-            return;
-        }
-
-        const recipient = 'jenxyapyeexuan@gmail.com';
-        const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
-
-        const body = encodeURIComponent(
-            'Name: ' + name + '\n' +
-            'Email: ' + email + '\n\n' +
-            'Message:\n' + message
-        );
-
-        const mailtoLink =
-            'mailto:' + recipient +
-            '?subject=' + subject +
-            '&body=' + body;
-
-        if (successMessage) {
-            successMessage.textContent =
-                'Opening your email app. Please send the email to complete your message.';
-        }
-
-        window.location.href = mailtoLink;
-    });
-}
 
 
 
