@@ -453,7 +453,53 @@
                     </div>
 
                     <!-- CONTACT FORM -->
-                    
+                   
+                    <form id="contactForm" class="contact-form" novalidate>
+
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+                            <span class="error-message" id="nameError" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address"
+                                required
+                            >
+                            <span class="error-message" id="emailError" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Type your message here..."
+                                required
+                            ></textarea>
+                            <span class="error-message" id="messageError" aria-live="polite"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            Send Message
+                        </button>
+
+                        <p id="formSuccess" class="success-message" aria-live="polite"></p>
+
+                    </form>
+
 
                 </div>
             </div>
