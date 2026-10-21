@@ -94,81 +94,62 @@ if (filterButtons.length > 0 && projectCards.length > 0) {
 
     
     // ==================== FEATURE 4: Contact Form & Email App ====================
-    const contactForm = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
-    const formSuccess = document.getElementById('formSuccess');
+    // FEATURE 4: Contact Form
+const contactForm = document.getElementById('contactForm');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-            let isValid = true;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const successMessage = document.getElementById('formSuccess');
 
-            if (nameInput.value.trim() === '') {
-                showError('nameError', 'Please enter your name.');
-                isValid = false;
-            } else {
-                clearError('nameError');
-            }
+        document.getElementById('nameError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('messageError').textContent = '';
 
-            if (
-                emailInput.value.trim() === '' ||
-                !emailInput.validity.valid
-            ) {
-                showError('emailError', 'Please enter a valid email address.');
-                isValid = false;
-            } else {
-                clearError('emailError');
-            }
+        let valid = true;
 
-            if (messageInput.value.trim() === '') {
-                showError('messageError', 'Please write a message before sending.');
-                isValid = false;
-            } else {
-                clearError('messageError');
-            }
+        if (!name) {
+            document.getElementById('nameError').textContent =
+                'Please enter your name.';
+            valid = false;
+        }
 
-            if (!isValid) return;
+        if (!email || !document.getElementById('email').validity.valid) {
+            document.getElementById('emailError').textContent =
+                'Please enter a valid email address.';
+            valid = false;
+        }
 
-            const recipient = 'jenxyapyeexuan@gmail.com';
-            const subject = encodeURIComponent(
-                'Portfolio Enquiry from ' + nameInput.value.trim()
-            );
+        if (!message) {
+            document.getElementById('messageError').textContent =
+                'Please write a message.';
+            valid = false;
+        }
 
-            const body = encodeURIComponent(
-                'Name: ' + nameInput.value.trim() + '\n' +
-                'Email: ' + emailInput.value.trim() + '\n\n' +
-                'Message:\n' + messageInput.value.trim()
-            );
+        if (!valid) return;
 
-            const mailtoLink =
-                'mailto:' + recipient +
-                '?subject=' + subject +
-                '&body=' + body;
+        const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
+        const body = encodeURIComponent(
+            'Name: ' + name + '\n' +
+            'Email: ' + email + '\n\n' +
+            'Message:\n' + message
+        );
 
-            if (formSuccess) {
-                formSuccess.textContent =
-                    'Your email app should open. Please press Send there to deliver your message.';
-            }
+        if (successMessage) {
+            successMessage.textContent =
+                'Your email app should open. Press Send in the email app to send your message.';
+        }
 
-            window.location.href = mailtoLink;
-        });
-    }
-
-    function showError(elementId, message) {
-        const errorElement = document.getElementById(elementId);
-        if (errorElement) errorElement.textContent = message;
-    }
-
-    function clearError(elementId) {
-        const errorElement = document.getElementById(elementId);
-        if (errorElement) errorElement.textContent = '';
-    }
-
-
-
+        window.location.href =
+            'mailto:jenxyapyeexuan@gmail.com?subject=' +
+            subject + '&body=' + body;
+    });
+}
     // ==================== FEATURE 5: Dynamic Copyright Year ====================
     const footerParagraph = document.querySelector('.site-footer p');
     if (footerParagraph) {
