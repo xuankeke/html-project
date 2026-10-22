@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isValid) return;
 
             // Prepare the email info
-            const recipient = 'jenxyapyeexuan@gmail.com';
+            const recipient = 'jenxyapwork@gmail.com';
 
             const subject = encodeURIComponent(
                 'Portfolio Enquiry from ' + name
